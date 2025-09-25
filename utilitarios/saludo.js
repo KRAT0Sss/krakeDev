@@ -7,13 +7,17 @@ saludar=function(){
     let estatura = recuperarFloat("txtEstatura");
     let mostrarBienvenida = "Bienvenido "+nombre+" "+apellido; 
     mostrarTexto("lblResultado", mostrarBienvenida);
-
+    msotrarImagen("imgSaludo", "./imagenes/saludo.gif")
 }
 mostrarTexto=function(idComponente, mensaje){
     let componente;
     componente=document.getElementById(idComponente);
     componente.innerText=mensaje;
-
+}
+msotrarImagen=function(idComponente, rutaImagen){
+    let componente;
+    componente=document.getElementById(idComponente);
+    componente.src=rutaImagen;
 }
 recuperarTexto=function(idComponente){
     let componente;
