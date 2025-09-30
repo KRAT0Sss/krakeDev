@@ -3,7 +3,7 @@ mostrarTexto=function(idComponente, mensaje){
     componente=document.getElementById(idComponente);
     componente.innerText=mensaje;
 }
-msotrarImagen=function(idComponente, rutaImagen){
+mostrarImagen=function(idComponente, rutaImagen){
     let componente;
     componente=document.getElementById(idComponente);
     componente.src=rutaImagen;
