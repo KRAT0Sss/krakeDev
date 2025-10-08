@@ -1,34 +1,100 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <script src="utilitarios.js"></script>
-        <script src="serviciosPuntoDeVenta.js"></script>
-        <script src="puntoDeVenta.js"></script>
-    </head>
-    <body>
-        <h3>Ingrese el nombre del producto</h3>
-        <input type="text" id="txtProducto"/>
-        <h3>Ingrese la cantidad a comprar</h3>
-        <input type="text" id="txtCantidad"/>
-        <h3>Ingrese el precio del producto</h3>
-        <input type="text" id="txtPrecio"/>
-        <h3>Ingrese el porcentaje de descuento</h3>
-        <input type="text" id="txtPorcentajeDescuento"/>
-        <h3>Subtotal</h3>
-        <h3 id="lblSubtotal">0.0</h3>
-        <h3>Descuento</h3>
-        <h3 id="lblDescuento">0.0</h3>
-        <h3>IVA 12%</h3>
-        <h3 id="lblValorIVA">0.0</h3>
-        <h3>Total</h3>
-        <h3 id="lblTotal">0.0</h3>
-        <h3 id="lblResumen"></h3>
 
-        <input type="button" value="CALCULAR TOTAL" 
-        onclick="calcularValorTotal()"/>
-        <input type="button" value="LIMPIAR" 
-        onclick="limpiar()"/>
-    
-    </body> 
+<head>
+    <script src="utilitarios.js"></script>
+    <script src="serviciosPuntoDeVenta.js"></script>
+    <script src="puntoDeVenta.js"></script>
+    <link rel="stylesheet" href="puntoDeVenta.css">
+</head>
+
+<body>
+    <div class="principal">
+        <div class="logoEscuela">
+            <img src="./imagenes/logoKrakeDev.png" width="80%" />
+        </div>
+        <div class="contenido">
+            <div class="titulo">
+                Punto de Venta
+            </div>
+            <div class="ingresoDatos">
+                <div class="tituloCampo">
+                    PRODUCTO
+                </div>
+                <div>
+                    <input type="text" id="txtProducto" class="cajaTexto" />
+                    <div class="error" id="lblError1"></div>
+                </div>
+            </div>
+
+            <div class="ingresoDatos">
+                <div class="tituloCampo">
+                    CANTIDAD
+                </div>
+                <div>
+                    <input type="text" id="txtCantidad" class="cajaTexto" />
+                    <div class="error" id="lblError2"></div>
+                </div>
+            </div>
+            <div class="ingresoDatos">
+                <div class="tituloCampo">
+                    PRECIO
+                </div>
+                <div>
+                    <input type="text" id="txtPrecio" class="cajaTexto" />
+                    <div class="error" id="lblError3"></div>
+                </div>
+            </div>
+
+            <div class="botones">
+                <div class="contenedorBoton">
+                    <input type="button" value="TOTAL" onclick="calcularValorTotal()" class="estiloBoton" />
+                </div>
+                <div class="contenedorBoton">
+                    <input type="button" value="LIMPIAR" onclick="limpiar()" class="estiloBoton" />
+                </div>
+            </div>
+        </div>
+        <div class="areaResultado">
+            <div class="resultado">
+                <div class="fila">
+                    <div>
+                        Subtotal:
+                    </div>
+                    <div id="lblSubtotal">
+                        0.0
+                    </div>
+                </div>
+                <div class="fila">
+                    <div>
+                        Descuento:
+                    </div>
+                    <div id="lblDescuento">
+                        0.0
+                    </div>
+                </div>
+                <div class="fila">
+                    <div>
+                        IVA 12%:
+                    </div>
+                    <div id="lblValorIVA">
+                        0.0
+                    </div>
+                </div>
+                <div class="fila">
+                    <div>
+                        Total:
+                    </div>
+                    <div id="lblTotal">
+                        0.0
+                    </div>
+                </div>
+
+                <div id="lblResumen"></div>
+            </div>
+        </div>
+    </div>
+
+</body>
+
 </html>
-
