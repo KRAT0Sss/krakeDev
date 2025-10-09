@@ -1,4 +1,4 @@
-validarEstructura = function(placa) {
+validarEstructura = function (placa) {
     let errores = ""; // Aquí vamos a ir acumulando los errores
 
     // 1. Validar longitud
@@ -39,4 +39,87 @@ validarEstructura = function(placa) {
     } else {
         return errores; // Retorna todos los errores concatenados
     }
+}
+
+obtenerProvincia = function (placa) {
+    let letra = placa.charAt(0);
+    let provincias = {
+        'A': 'Azuay',
+        'B': 'Bolívar',
+        'U': 'Cañar',
+        'C': 'Carchi',
+        'X': 'Cotopaxi',
+        'H': 'Chimborazo',
+        'O': 'El Oro',
+        'E': 'Esmeraldas',
+        'W': 'Galápagos',
+        'G': 'Guayas',
+        'I': 'Imbabura',
+        'L': 'Loja',
+        'R': 'Los Ríos',
+        'M': 'Manabí',
+        'V': 'Morona Santiago',
+        'N': 'Napo',
+        'S': 'Pastaza',
+        'P': 'Pichincha',
+        'K': 'Sucumbíos',
+        'Q': 'Orellana',
+        'T': 'Tungurahua',
+        'Z': 'Zamora Chinchipe',
+        'Y': 'Santa Elena'
+    }
+    let provincia = provincias[letra];
+    if (!provincia) {
+        return null;
+    }
+    return provincia;
+}
+
+obtenerTipoVehiculo = function (placa) {
+    let letra = placa.charAt(1)
+    if (letra === 'A' || letra === 'Z') {
+        return "Vehiculo comercial";
+    }
+    if (letra === 'E') {
+        return "Vehículo gubernamental";
+    }
+    if (letra === 'X') {
+        return "Vehículo de uso oficial";
+    }
+    if (letra === 'S') {
+        return "Vehículo del gobierno provincial";
+    }
+    if (letra === 'M') {
+        return "Vehículo municipal";
+    }
+    return "Vehículo particular";
+
+}
+
+obtenerDiaPicoYPlaca = function (placa) {
+    let diaLibre = esDiaLibre()
+    if (diaLibre) {
+        return "Sábado y Domingo:libre circulación";
+        // no retorna feriados
+    }
+    let ultimoCaracter = placa.charAt(placa.length - 1)
+
+    if (ultimoCaracter === '1' || ultimoCaracter === '2') {
+        return "Lunes";
+    } else if (ultimoCaracter === '3' || ultimoCaracter === '4') {
+        return "Martes";
+    } else if (ultimoCaracter === '5' || ultimoCaracter === '6') {
+        return "Miércoles";
+    } else if (ultimoCaracter === '7' || ultimoCaracter === '8') {
+        return "Jueves";
+    } else if (ultimoCaracter === '9' || ultimoCaracter === '0') {
+        return "Viernes";
+    } else {
+        return false;
+    }
+}
+esDiaLibre = function() {
+    const hoy = new Date(); 
+    const dia = hoy.getDay();
+    return dia === 0 || dia === 6;
 }
