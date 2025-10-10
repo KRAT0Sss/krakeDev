@@ -54,7 +54,7 @@ buscarLetra =function(cadena, letra){
 contarMayusculas=function(cadena){
     let letra;
     let contadorMayusculas;
-    for(i=0;i<cadena.length;i++){
+    for(let i=0;i<cadena.length;i++){
         letra=cadena.charAt(i);
         if(esMayuscula(letra)){
             contadorMayusculas++
