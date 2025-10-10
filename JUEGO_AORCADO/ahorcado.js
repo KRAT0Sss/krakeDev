@@ -1,9 +1,32 @@
 //No se olvide de respirar, mantenga la calma y demuestre lo que sabe
-esMayuscula=function(caracter){
-    let codigo=caracter.charAt(0)
-    if(codigo>=65 && codigo <=90){
-        return true;
+let palabraSecreta; 
+guardarPalabra=function(){
+    let palabraRecuperada=recuperarTexto("txtSecreta");
+    if(palabraRecuperada.length == 5){
+        if(contarMayusculas(palabraRecuperada)==true){
+            palabraSecreta=palabraRecuperada;
+            alert("Palabra valida");
+        }else{
+            alert("todas las lestras deben ser mayusculas");
+        }
     }else{
+        alert("debe ingresar 5 letras mayusculas ");
+    }
+    console.log(palabraSecreta);
+}
+esMayuscula = function (caracter) {
+    let codigo = caracter.charCodeAt(0)
+    if (codigo >= 65 && codigo <= 90) {
+        return true;
+    } else {
         return false;
     }
+}
+contarMayusculas = function (cadena) {
+    for (let i = 0; i < cadena.length; i++) {
+        if (!esMayuscula(cadena.charAt(i))) {
+            return false;
+        }
+    }
+    return true;
 }
