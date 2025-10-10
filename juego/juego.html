@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script src="juego.js"></script>
+    <script src="servicioJuego.js"></script>
+    <script src="utilitarios.js"></script>
+    <link rel="stylesheet" href="juego.css">
+    <title>JUEGO</title>
+</head>
+
+<body>
+    <div class="principal">
+        <div class="titulo">JUEGO PIERDA, PAPEL O TIJERA</div>
+        <div class="imagen">
+            <img src="./imagenes/piedra.png" width="300px" onclick="jugar('Piedra')">
+            <img src="./imagenes/papel.png" width="300px" onclick="jugar('Papel')" />
+            <img src="./imagenes/tijera.png" width="300px" onclick="jugar('Tijera')">
+        </div>
+        <div class="imagen">
+            <img id="imgPC" width="300px" />
+        </div>
+        <div class="mostrarPutaje">
+            <div id="lblResultado"></div>
+            <div>PUNTAJE USUARIO</div>
+            <div id="puntajeUsuario">0</div>
+            <div>PUNTAJE COMPUTADOR</div>
+            <div id="puntajeComputador">0</div>
+            <div id="lblRespuesta"></div>
+        </div>
+        <div class="boton">
+            <input type="button" value="NUEVA PARTIDA" onclick="limpiar();" class="estiloBoton" />
+        </div>
+    </div>
+</body>
+
+</html>
