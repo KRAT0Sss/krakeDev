@@ -56,3 +56,12 @@ validar = function (letra) {
     }
     console.log("letras encontradas "+letrasEnconctradas);
 }
+
+ingresarLetra=function(){
+    let letra=recuperarTexto("txtLetra");
+    if(esMayuscula(letra)==true){
+        validar(letra);
+    }else{
+        alert("solo se aceptan mayusculas");
+    }
+}
