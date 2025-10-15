@@ -32,3 +32,55 @@ crearProducto = function(){
         console.log("producto 2 tiene mas stock ");
     }
 }
+
+modificarAtributos = function(){
+    let cuenta ={
+        numero:"5789465879",
+        saldo: 0.0
+    }
+    cuenta.saldo=100;
+    cuenta.saldo+=10;
+    console.log(cuenta.saldo);
+}
+
+crearCliente=function(){
+    let cliente={
+        nombre:"Juan",
+        cedula:"123451"
+    }
+    cliente.nombr="xxxx"// crea una nueva propiedad en la variable 
+    let cliente1={};
+    cliente1.nombre="Romeo";
+    cliente1.apellido="Santos";
+    cliente1.cedula="175544780";
+}
+
+probarIncrementoSaldo=function(){
+    let cta={ numero:"31215546",saldo:34.0}
+    incrementarSaldo(cta,100);
+    console.log(cta.saldo);
+}
+
+probarDeterminarMayor=function(){
+    let per1={nombre:"Luis",edad:45}
+    let per2={nombre:"Maria",edad:78}
+    let mayor=determinarMayor(per1,per2);
+    if(mayor!=null){
+        console.log("El mayor es: "+mayor.nombre);
+    }
+
+}
+
+incrementarSaldo=function(cuenta,monto){
+    cuenta.saldo+=monto;
+}
+
+determinarMayor=function(persona1,persona2){
+    if(persona1.edad>persona2.edad){
+        return persona1;
+    } else if(persona2.edad>persona1.edad){
+        return persona2;
+    }else{
+        return null;
+    }
+}
