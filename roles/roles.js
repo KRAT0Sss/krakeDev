@@ -5,19 +5,28 @@ let empleados = [
 
 ]
 
-mostrarEmpleados=function(){
+mostrarEmpleados = function () {
     let empleado;
-    let cmpTabla=document.getElementById("tablaEmpleados");
-    let tabalaEmpleado="<table><tr><th>CEDULA</th><th>NOMBRE</th><th>APELLIDO</th><th>SUELDO</th></tr>"
-    for(let i=0;i<empleados.length;i++){
-        empleado=empleados[i];
-        tabalaEmpleado+="<tr><td>"+empleado.cedula+"</td>";
-        tabalaEmpleado+="<td>"+empleado.nombre+"</td>";
-        tabalaEmpleado+="<td>"+empleado.apellido+"</td>";
-        tabalaEmpleado+="<td>"+empleado.sueldo+"</td></tr>";
+    let cmpTabla = document.getElementById("tablaEmpleados");
+    let tabalaEmpleado = `
+    <table>
+        <thead>
+            <tr><th>CEDULA</th><th>NOMBRE</th><th>APELLIDO</th><th>SUELDO</th></tr>
+        </thead>
+        <tbody>
+    `;
+    for (let i = 0; i < empleados.length; i++) {
+        empleado = empleados[i];
+        tabalaEmpleado += "<tr><td>" + empleado.cedula + "</td>";
+        tabalaEmpleado += "<td>" + empleado.nombre + "</td>";
+        tabalaEmpleado += "<td>" + empleado.apellido + "</td>";
+        tabalaEmpleado += "<td>" + empleado.sueldo + "</td></tr>";
     }
-    tabalaEmpleado+="</table";
-    cmpTabla.innerHTML=tabalaEmpleado;
+    tabalaEmpleado += `
+        </tbody>
+    </table>
+    `;
+    cmpTabla.innerHTML = tabalaEmpleado;
 
 }
 
