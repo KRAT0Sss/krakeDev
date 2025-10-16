@@ -92,7 +92,10 @@ limpiar = function () {
     mostrarTextoEnCaja("txtNombre","");
     mostrarTextoEnCaja("txtApellido","");
     mostrarTextoEnCaja("txtSueldo","");
+    mostrarTextoEnCaja("txtBusquedaCedula","");
+    habilitarComponente("txtBusquedaCedula");
     desabilitarElementos();
+    
 
 }
 
