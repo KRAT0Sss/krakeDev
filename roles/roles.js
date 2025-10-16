@@ -103,7 +103,7 @@ guardar = function () {
             if(empleadoAgregado==true){
                 alert("EMPLEADO GUARDADO CORRECTAMENTE");
                 mostrarEmpleados();
-                desabilitarElementos();
+                desabilitarElementos(); 
             }else{
                 alert("YA EXISTE UN EMPLEADO CON CEDULA "+empleado.cedula)
             }
@@ -149,6 +149,8 @@ desabilitarElementos = function () {
     deshabilitarComponente("txtNombre");
     deshabilitarComponente("txtApellido");
     deshabilitarComponente("txtSueldo");
+
+    
 }
 mostrarEmpleados = function () {
     let empleado;
