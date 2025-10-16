@@ -85,30 +85,86 @@ validarSueldo = function (sueldo, idComponente) {
     }
     return true;
 }
+
+limpiar = function () {
+    esNuevo==false;
+    mostrarTextoEnCaja("txtCedula","");
+    mostrarTextoEnCaja("txtNombre","");
+    mostrarTextoEnCaja("txtApellido","");
+    mostrarTextoEnCaja("txtSueldo","");
+    desabilitarElementos();
+
+}
+
 guardar = function () {
     let cedula = recuperarTexto("txtCedula");
     let nombre = recuperarTexto("txtNombre");
     let apellido = recuperarTexto("txtApellido");
     let sueldo = recuperarFloat("txtSueldo");
-    
-    
-    if(validarCedula(cedula, "lblErrorCedula")&validarNombre(nombre, "lblErrorNombre")&validarApellido(apellido, "lblErrorApellido")&validarSueldo(sueldo, "lblErrorSueldo")){
-        if(esNuevo!==false){
-            let empleado={};
-            empleado.cedula=cedula;
-            empleado.nombre=nombre;
-            empleado.apellido=apellido;
-            empleado.sueldo=sueldo;
-            let empleadoAgregado=agregarEmpleado(empleado);
-            if(empleadoAgregado==true){
+
+
+    // Validaciones
+    if (validarCedula(cedula, "lblErrorCedula") & validarNombre(nombre, "lblErrorNombre") & validarApellido(apellido, "lblErrorApellido") & validarSueldo(sueldo, "lblErrorSueldo")) {
+        if (esNuevo !== false) {
+            //NUEVO EMPLEADO
+            let empleado = {};
+            empleado.cedula = cedula;
+            empleado.nombre = nombre;
+            empleado.apellido = apellido;
+            empleado.sueldo = sueldo;
+            let empleadoAgregado = agregarEmpleado(empleado);
+            if (empleadoAgregado == true) {
                 alert("EMPLEADO GUARDADO CORRECTAMENTE");
                 mostrarEmpleados();
-                desabilitarElementos(); 
-            }else{
-                alert("YA EXISTE UN EMPLEADO CON CEDULA "+empleado.cedula)
+                desabilitarElementos();
+                esNuevo = false;
+            } else {
+                alert("YA EXISTE UN EMPLEADO CON CEDULA " + empleado.cedula)
+
+            }
+        } else {
+            //MODIFICAR EMPLEADO
+            let empleadoEnconrado = buscarEmpleado(cedula);
+            if (empleadoEnconrado !== null) {
+                empleadoEnconrado.nombre = nombre;
+                empleadoEnconrado.apellido = apellido;
+                empleadoEnconrado.sueldo = sueldo;
+                alert("EMPLEADO MODIFICADO EXITOSAMENTE")
+                mostrarEmpleados();
+                desabilitarElementos();
+                esNuevo = false;
+            } else {
+                alert("NO SE ENCONTRO EMPLEADO CON CEDULA: " + cedula);
             }
         }
-        
+
+    }
+}
+
+ejecutarBusqueda = function () {
+    let cedula = recuperarTexto("txtBusquedaCedula");
+    let cedulaEncotrada = buscarEmpleado(cedula);
+    if (cedulaEncotrada !== null) {
+        mostrarEmpleados();
+        //Llenar los campos con los datos del empleado
+        mostrarTextoEnCaja("txtCedula", cedulaEncotrada.cedula);
+        mostrarTextoEnCaja("txtNombre", cedulaEncotrada.nombre);
+        mostrarTextoEnCaja("txtApellido", cedulaEncotrada.apellido);
+        mostrarTextoEnCaja("txtSueldo", cedulaEncotrada.sueldo);
+
+        // Preparar la edición
+        deshabilitarComponente("txtCedula");// la cédula no se puede cambiar
+        habilitarComponente("txtNombre");
+        habilitarComponente("txtApellido");
+        habilitarComponente("txtSueldo");
+        habilitarComponente("btnGuardar");
+        //Deshabilitar la búsqueda para no perder datos
+        deshabilitarComponente("txtBusquedaCedula");
+        // Indicar que NO es un nuevo empleado
+        esNuevo = false;
+
+    } else {
+        alert("EMPLEADO NO EXISTE");
     }
 }
 
@@ -134,7 +190,7 @@ buscarEmpleado = function (cedula) {
 }
 
 ejecutarNuevo = function () {
-    esNuevo = true;
+    esNuevo = true; // Modo creación
     habilitarComponente("btnGuardar");
     habilitarComponente("txtCedula");
     habilitarComponente("txtNombre");
@@ -150,7 +206,7 @@ desabilitarElementos = function () {
     deshabilitarComponente("txtApellido");
     deshabilitarComponente("txtSueldo");
 
-    
+
 }
 mostrarEmpleados = function () {
     let empleado;
