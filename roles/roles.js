@@ -179,13 +179,48 @@ agregarEmpleado = function (empleado) {
     }
     return false;
 }
+
+validarDescuento = function (sueldo, descuento, idComponente) {
+    if (isNaN(descuento)) {
+        mostrarTexto(idComponente, "Debe ingresar un numero");
+        return false;
+    }
+    if (descuento < 0 || descuento > sueldo) {
+        mostrarTexto(idComponente, "Debe ingresar un valor que este entre 400-5000");
+        return false;
+    }
+    return true;
+}
+
+calcularAporteEmpleado = function (sueldo) {
+    let porcentajeSueldo = sueldo * (9.45 / 100);
+    return porcentajeSueldo;
+}
+
+calcularValorAPagar = function (sueldo, aporteIess, descuento) {
+    let valorApagar = sueldo - aporteIess - descuento;
+    return valorApagar;
+
+}
+
+calcularRol = function () {
+    let sueldo = recuperarFloatDiv("infoSueldo");
+    let descuento = recuperarFloat("txtDescuentos");
+    let descuentoValido = validarDescuento(sueldo,descuento,"lblErrorDescuentos");
+    let aporte=calcularAporteEmpleado(sueldo);
+    mostrarTexto("infoIESS",aporte.toFixed(2))
+    let valorApagar=calcularValorAPagar(sueldo,aporte,descuentoValido);
+    mostrarTexto("infoPago",valorApagar.toFixed(2));
+
+}
+
 buscarPorRol = function () {
     let cedula = recuperarTexto("txtBusquedaCedulaRol");
     let empleadoEnconrado = buscarEmpleado(cedula);
     if (empleadoEnconrado !== null) {
         mostrarTexto("infoCedula", empleadoEnconrado.cedula);
-        mostrarTexto("infoSueldo",empleadoEnconrado.sueldo);
-        mostrarTexto("infoNombre", empleadoEnconrado.nombre+" "+empleadoEnconrado.apellido);
+        mostrarTexto("infoSueldo", empleadoEnconrado.sueldo);
+        mostrarTexto("infoNombre", empleadoEnconrado.nombre + " " + empleadoEnconrado.apellido);
     } else {
         alert("EL EMPLEADO NO EXISTE");
     }
