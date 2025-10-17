@@ -87,15 +87,15 @@ validarSueldo = function (sueldo, idComponente) {
 }
 
 limpiar = function () {
-    esNuevo==false;
-    mostrarTextoEnCaja("txtCedula","");
-    mostrarTextoEnCaja("txtNombre","");
-    mostrarTextoEnCaja("txtApellido","");
-    mostrarTextoEnCaja("txtSueldo","");
-    mostrarTextoEnCaja("txtBusquedaCedula","");
+    esNuevo == false;
+    mostrarTextoEnCaja("txtCedula", "");
+    mostrarTextoEnCaja("txtNombre", "");
+    mostrarTextoEnCaja("txtApellido", "");
+    mostrarTextoEnCaja("txtSueldo", "");
+    mostrarTextoEnCaja("txtBusquedaCedula", "");
     habilitarComponente("txtBusquedaCedula");
     desabilitarElementos();
-    
+
 
 }
 
@@ -178,6 +178,17 @@ agregarEmpleado = function (empleado) {
         return true;
     }
     return false;
+}
+buscarPorRol = function () {
+    let cedula = recuperarTexto("txtBusquedaCedulaRol");
+    let empleadoEnconrado = buscarEmpleado(cedula);
+    if (empleadoEnconrado !== null) {
+        mostrarTexto("infoCedula", empleadoEnconrado.cedula);
+        mostrarTexto("infoSueldo",empleadoEnconrado.sueldo);
+        mostrarTexto("infoNombre", empleadoEnconrado.nombre+" "+empleadoEnconrado.apellido);
+    } else {
+        alert("EL EMPLEADO NO EXISTE");
+    }
 }
 
 buscarEmpleado = function (cedula) {
