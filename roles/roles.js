@@ -6,6 +6,10 @@ let empleados = [
 ]
 let esNuevo = false;
 
+let roles=[]
+
+
+
 esDigito = function (caracter) {
     let codigo = caracter.charCodeAt(0);
 
@@ -206,11 +210,53 @@ calcularValorAPagar = function (sueldo, aporteIess, descuento) {
 calcularRol = function () {
     let sueldo = recuperarFloatDiv("infoSueldo");
     let descuento = recuperarFloat("txtDescuentos");
-    let descuentoValido = validarDescuento(sueldo,descuento,"lblErrorDescuentos");
-    let aporte=calcularAporteEmpleado(sueldo);
-    mostrarTexto("infoIESS",aporte.toFixed(2))
-    let valorApagar=calcularValorAPagar(sueldo,aporte,descuentoValido);
-    mostrarTexto("infoPago",valorApagar.toFixed(2));
+    let descuentoValido = validarDescuento(sueldo, descuento, "lblErrorDescuentos");
+    let aporte = calcularAporteEmpleado(sueldo);
+    mostrarTexto("infoIESS", aporte.toFixed(2))
+    let valorApagar = calcularValorAPagar(sueldo, aporte, descuentoValido);
+    mostrarTexto("infoPago", valorApagar.toFixed(2));
+    habilitarComponente("botonGuardar");
+}
+
+buscarRol=function(cedula){
+    for(let i=0;i<roles.length;i++){
+        if(roles[i].cedula===cedula){
+            return roles[i];
+        }
+    }
+    return null;
+}
+
+agregarRol=function(rol){
+    let rolEncontrado=buscarRol(rol.cedula)
+    if(rolEncontrado===null){
+        roles.push(rol);
+    }
+}
+
+calcularAporteEmpleador=function(sueldo){
+    let valorApagar=sueldo*(11.15/100);
+    return valorApagar;
+}
+
+guardarRol=function(){
+    let nombre=recuperarTextoDiv("infoNombre");
+    let cedula=recuperarTextoDiv("infoCedula");
+    let sueldo=recuperarFloatDiv("infoSueldo");
+    let pago=recuperarFloatDiv("infoPago");
+    let iess=recuperarFloatDiv("infoIESS");
+    let sueldoEmpleado=calcularAporteEmpleador(sueldo);
+    let rol={};
+    rol.cedula=cedula;
+    rol.nombre=nombre;
+    rol.sueldo=sueldo;
+    rol.valorApagar=pago;
+    rol.aporteEmpledo=iess;
+    rol.aporteEmpledor=sueldoEmpleado;
+    agregarRol(rol);
+    alert("ROL GUARDADO CON EXITO");
+    deshabilitarComponente("botonGuardar");
+    
 
 }
 
@@ -292,6 +338,7 @@ mostrarOpcionEmpleado = function () {
 mostrarOpcionRol = function () {
     ocultarComponente("divEmpleado");
     ocultarComponente("divResumen");
+    deshabilitarComponente("botonGuardar");
 }
 
 mostrarOpcionResumen = function () {
