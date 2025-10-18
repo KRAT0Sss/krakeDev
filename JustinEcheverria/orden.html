@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script src="orden.js"></script>
+    <script src="utilitarios.js"></script>
+    <link rel="stylesheet" href="orden.css">
+</head>
+
+<body onload="mostrarPersonas();">
+    <div class="principal">
+        <div class="logoEscuela">
+            <img src="./imagenes/logoKrakeDev.png" width="80%" />
+        </div>
+        <div class="contenido">
+            <div class="titulo">
+                Punto de Venta
+            </div>
+            <div class="ingresoDatos">
+                <div class="tituloCampo">
+                    NOMBRE
+                </div>
+                <div>
+                    <input type="text" id="txtNombre" class="cajaTexto" />
+                    <div class="error" id="lblError1"></div>
+                </div>
+            </div>
+
+            <div class="ingresoDatos">
+                <div class="tituloCampo">
+                    EDAD
+                </div>
+                <div>
+                    <input type="text" id="txtEdad" class="cajaTexto" />
+                    <div class="error" id="lblError2"></div>
+                </div>
+            </div>
+
+
+            <div class="botones">
+                <div class="contenedorBoton">
+                    <input type="button" value="GUARDAR" onclick="calcularValorTotal()" class="estiloBoton" />
+                </div>
+                <div class="contenedorBoton">
+                    <input type="button" value="ENCONTRAR MAYOR" onclick="determinarMayor()" class="estiloBoton" />
+                </div>
+                <div class="contenedorBoton">
+                    <input type="button" value="ENCONTRAR MENOR" onclick="determinarMenor()" class="estiloBoton" />
+                </div>
+            </div>
+        </div>
+        <div class="areaResultado">
+            <div class="resultado">
+                <div class="fila">
+                    <div>
+                        MAYOR:
+                    </div>
+                    <div id="lblMayor">
+
+                    </div>
+                    <div>
+                        MENOR:
+                    </div>
+                    <div id="lblMenor">
+
+                    </div>
+                </div>
+                <div id="tablaEmpleados" class="areaTabla"></div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
