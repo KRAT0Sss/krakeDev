@@ -29,6 +29,8 @@ function esEstudiantes() {
 
     }
 }
+
+/////
 limpiar=function(){
     mostrarTextoEnCaja("txtNombre","")
     mostrarTextoEnCaja("txtCorreo","")

@@ -28,6 +28,8 @@ function recuperarTexto(idComponente) {
   return componente ? componente.value : "";
 }
 
+///
+
 // Recupera número entero de input, retorna NaN si no es válido
 function recuperarInt(idComponente) {
   const texto = recuperarTexto(idComponente);

@@ -74,6 +74,9 @@ contarMayusculas = function (cadena) {
     return false;
 }
 
+
+
+///
 probarBusqueda = function () {
     let frutaIngresada = recuperarTexto("lblFruta");
     let resultado = buscar(frutaIngresada);
